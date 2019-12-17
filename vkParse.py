@@ -24,7 +24,6 @@ def get_albums(vk, vk_tools):
         albums.append({'name': album['title'], 'photos': [p['sizes'][-1]['url'] for p in photos['items']]})
     return albums
 
-# авторизация по токену или логин-паролю
 def login_vk(login=None, password=None):
     vk_session = vk_api.VkApi(login, password, captcha_handler=captcha_handler, app_id=APP_ID, 
                               api_version=API_VERSION, auth_handler=auth_handler, scope = 'PHOTOS')
@@ -32,7 +31,6 @@ def login_vk(login=None, password=None):
     return vk_session.get_api()
 
 def main():
-    # логинимся по токену
     inputLogin = input('Login: ')
     inputPassword = input('Password: ')
     vk = login_vk(login=inputLogin, password=inputPassword)
